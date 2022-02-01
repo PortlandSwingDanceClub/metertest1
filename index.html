@@ -46,12 +46,52 @@
 
 /*Progress Bar Bar*/
 .bar {
+    /*-webkit-mask:linear-gradient(90deg, #eb9793 49.99999%, #efc57f 50%, #efc57f 64.9999%, #a3dd7d 65%, #a3dd7d 89.9999%, #b6b3c5 90%);
+          mask:linear-gradient(90deg, #eb9793 49.99999%, #efc57f 50%, #efc57f 64.9999%, #a3dd7d 65%, #a3dd7d 89.9999%, #b6b3c5 90%);*/
 	background: linear-gradient(90deg, #eb9793 49.99999%, #efc57f 50%, #efc57f 64.9999%, #a3dd7d 65%, #a3dd7d 89.9999%, #b6b3c5 90%);
     height: 14px;
 }
 
 tw-include[title="Update Health Bar"] {
 	display: none;
+}
+
+
+
+
+
+
+
+.progress-bar-container {
+  width: 500px;
+  height: 50px;
+  margin: 50px 0px;
+  background: black;
+}
+
+.progress-bar-indicator {
+  height: 100%; 
+  background-image: linear-gradient(90deg, #eb9793 49.99999%, #efc57f 50%, #efc57f 64.9999%, #a3dd7d 65%, #a3dd7d 89.9999%, #b6b3c5 90%);
+  /*background-image: linear-gradient(to right, red, green, blue);*/
+  /*                ↓ same as container width */  
+  background-size: 500px 100%;
+  border-radius: 2px;
+}
+
+#indicator-1 {
+  width: 25%;
+}
+
+#indicator-2 {
+  width: 51%;
+}
+
+#indicator-3 {
+  width: 86%;
+}
+
+#indicator-4 {
+  width: 100%;
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* Create an unique private namespace to contain custom code. */
 if (!window.GE) {
 	window.GE = {};
@@ -67,11 +107,19 @@ window.GE.updateHeathBar = function (maxHealth, health) {
 	outer.data('total', maxHealth);
 	outer.data('value', health);
 	inner.css('width', barWidth + "%");
-};</script><tw-passagedata pid="1" name="1" tags="" position="460.5,186.5" size="100,100">(set:$batteryPower to 800)(meter: bind $batteryPower, 1000, &quot;X&quot;, &quot;Battery Power: $batteryPower&quot;, (gradient: 90, 0, red, 1, orange))
+};</script><tw-passagedata pid="1" name="1" tags="" position="460.5,185.5" size="100,100">(set:$batteryPower to 800)(meter: bind $batteryPower, 1000, &quot;X&quot;, &quot;Battery Power: $batteryPower&quot;, (gradient: 90, 0, red, 1, orange))
 
 (set:$threatLevel to 2)(b4r:&#39;solid&#39;)(meter: bind $threatLevel, 10, &quot;==X&quot;, red)
 
 (set: $health to 25)(display: &quot;Update Health Bar&quot;)
+
+
+
+
+
+&lt;div class=&quot;progress-bar-container&quot;&gt;
+  &lt;div class=&quot;progress-bar-indicator&quot; id=&quot;indicator-1&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
 
 [[next-&gt;2]]</tw-passagedata><tw-passagedata pid="2" name="2" tags="" position="580.5,184.5" size="100,100">(set:$batteryPower to 850)(meter: bind $batteryPower, 1000, &quot;X&quot;, &quot;Battery Power: $batteryPower&quot;, (gradient: 90, 0, red, 1, orange))
 
@@ -79,17 +127,35 @@ window.GE.updateHeathBar = function (maxHealth, health) {
 
 (set: $health to 50)(display: &quot;Update Health Bar&quot;)
 
+&lt;div class=&quot;progress-bar-container&quot;&gt;
+  &lt;div class=&quot;progress-bar-indicator&quot; id=&quot;indicator-2&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+
 [[next-&gt;3]]</tw-passagedata><tw-passagedata pid="3" name="3" tags="" position="700.5,186.5" size="100,100">(set:$batteryPower to 900)(meter: bind $batteryPower, 1000, &quot;X&quot;, &quot;Battery Power: $batteryPower&quot;, (gradient: 90, 0, red, 1, orange))
 
 (set:$threatLevel to 6)(b4r:&#39;solid&#39;)(meter: bind $threatLevel, 10, &quot;==X&quot;, red)
 
 (set: $health to 75)(display: &quot;Update Health Bar&quot;)
 
+
+
+
+&lt;div class=&quot;progress-bar-container&quot;&gt;
+  &lt;div class=&quot;progress-bar-indicator&quot; id=&quot;indicator-3&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+
 [[next-&gt;4]]</tw-passagedata><tw-passagedata pid="4" name="4" tags="" position="820.5,186.5" size="100,100">(set:$batteryPower to 1000)(meter: bind $batteryPower, 1000, &quot;X&quot;, &quot;Battery Power: $batteryPower&quot;, (gradient: 90, 0, red, 1, orange))
 
 (set:$threatLevel to 10)(b4r:&#39;solid&#39;)(meter: bind $threatLevel, 10, &quot;==X&quot;, red)
 
 (set: $health to 100)(display: &quot;Update Health Bar&quot;)
+
+
+
+
+&lt;div class=&quot;progress-bar-container&quot;&gt;
+  &lt;div class=&quot;progress-bar-indicator&quot; id=&quot;indicator-4&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
 
 You&#39;re done!</tw-passagedata><tw-passagedata pid="5" name="Update Health Bar" tags="" position="460.5,306.5" size="100,100">{(print: &quot;&lt;script&gt;GE.updateHeathBar(&quot; + (text: $maxHealth) + &quot;,&quot; + (text: $health) + &quot;);&quot;)
 &lt;div id=&quot;health-bar&quot;&gt;\
